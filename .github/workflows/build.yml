@@ -7,6 +7,8 @@ on:
     paths:
       - '.github/workflows/build.yml'
       - 'packages/**/*'
+      - '!packages/**/*.md'
+      - '!packages/docs/*'
       - 'scripts/**/*'
       - 'babel.config.js'
       - 'package.json'
@@ -17,6 +19,8 @@ on:
     paths:
       - '.github/workflows/build.yml'
       - 'packages/**/*'
+      - '!packages/**/*.md'
+      - '!packages/docs/*'
       - 'scripts/**/*'
       - 'babel.config.js'
       - 'package.json'

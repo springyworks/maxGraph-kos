@@ -25,12 +25,17 @@ Changes in the source code
 - Update the [CHANGELOG](../../CHANGELOG.md) to list the major changes included in the new version. Be generic and add a
 link to the future GitHub release that will contain detailed release notes, as shown below.
 ```markdown
-For more details, see the [0.1.0 Changelog](https://github.com/maxGraph/maxGraph/releases/tag/v0.1.0) on the GitHub release page.
+For more details, see the [0.1.0 Changelog](https://github.com/maxGraph/maxGraph/releases/tag/v0.1.0) on
+the GitHub release page.
 ```
-- Make a single commit that includes the changes described above.
+- Make a single commit that includes the changes described above
+  - use the following template for the commit message: `chore(release): prepare version 0.2.0`
+  - push the changes
 
 Create a git tag, prefixing the version with a `v`. For example, if the version is 0.2.0, run
+
 ```
+git fetch --tags
 git tag v0.2.0
 git push origin v0.2.0
 ```
@@ -39,7 +44,9 @@ git push origin v0.2.0
 ## Publish the npm package
 
 - Checkout the tag that has just been created
-- From packages/core, run `npm publish`
+- From packages/core:
+  - delete the `dist` folder 
+  - run `npm publish`
 
 
 ## Create the GitHub release
