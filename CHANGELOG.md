@@ -1,5 +1,12 @@
 # `maxGraph` Change Log
 
+## 0.2.1
+
+This is a bug fix release.
+
+For more details, see the [0.2.1 Changelog](https://github.com/maxGraph/maxGraph/releases/tag/v0.2.1) on
+the GitHub release page.
+
 ## 0.2.0
 
 This release contains bug fixes and documentation improvements.
@@ -10,7 +17,7 @@ This release contains bug fixes and documentation improvements.
   - some types related to `CellStateStyle` have been renamed. For more details, see [PR #165](https://github.com/maxGraph/maxGraph/pull/165) and commit [ca1914b](https://github.com/maxGraph/maxGraph/commit/ca1914b5824eed253556df585337aa07d974e920).
   - some properties of `CellStateStyle` have changed (removed or renamed). The renamed properties better match the former `mxGraph` properties. For more details, see [PR #165](https://github.com/maxGraph/maxGraph/pull/165) and commit [ca1914b](https://github.com/maxGraph/maxGraph/commit/ca1914b5824eed253556df585337aa07d974e920).
 
-For more details, see the [0.2.0 Changelog](https://github.com/maxGraph/maxGraph/releases/tag/v0.1.0) on
+For more details, see the [0.2.0 Changelog](https://github.com/maxGraph/maxGraph/releases/tag/v0.2.0) on
 the GitHub release page.
 
 ## 0.1.0

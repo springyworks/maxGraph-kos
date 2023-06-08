@@ -20,7 +20,7 @@ class Client {
   /**
    * Contains the current version of the maxGraph library.
    */
-  static VERSION = '0.2.0';
+  static VERSION = '0.2.1';
 
   /**
    * Base path for all URLs in the core without trailing slash.
