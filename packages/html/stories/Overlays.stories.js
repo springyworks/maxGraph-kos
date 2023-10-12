@@ -23,13 +23,15 @@ import {
   utils,
   ImageBox,
 } from '@maxgraph/core';
-
-import { globalTypes } from '../.storybook/preview';
+import { globalTypes, globalValues } from './shared/args.js';
 
 export default {
   title: 'Effects/Overlays',
   argTypes: {
     ...globalTypes,
+  },
+  args: {
+    ...globalValues,
   },
 };
 
@@ -80,7 +82,7 @@ const Template = ({ label, ...args }) => {
 
         // Installs a handler for clicks on the overlay
         overlay.addListener(InternalEvent.CLICK, (sender, evt2) => {
-          utils.alert('Overlay clicked');
+          window.alert('Overlay clicked');
         });
 
         // Sets the overlay for the cell in the graph

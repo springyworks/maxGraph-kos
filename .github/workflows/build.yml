@@ -42,8 +42,6 @@ jobs:
           node-version-file: '.nvmrc'
       - name: Install dependencies
         run: npm install
-      - name: Ensure no lint errors
-        run: npm run lint
       - name: Build @maxgraph/core - umd
         working-directory: packages/core
         run: npm run build
@@ -62,3 +60,15 @@ jobs:
       - name: Build ts-example
         working-directory: packages/ts-example
         run: npm run build
+      - name: Build Storybook mini-site
+        working-directory: packages/html
+        run: npm run build
+      - name: Upload all examples as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: bundles-test-results-${{github.sha}}
+          path: |
+            packages/html/dist/
+            packages/ts-example/dist/
+      - name: Ensure no lint errors
+        run: npm run lint
