@@ -11,6 +11,8 @@ the GitHub release page.
 
 ## 0.4.0
 
+Release date: `2023-09-14`
+
 This release contains new features, bug fixes and documentation improvements.
 
 **Major improvements**
@@ -20,6 +22,8 @@ For more details, see the [0.4.0 Changelog](https://github.com/maxGraph/maxGraph
 the GitHub release page.
 
 ## 0.3.0
+
+Release date: `2023-07-07`
 
 This release contains new features, bug fixes and documentation improvements.
 
@@ -32,12 +36,16 @@ the GitHub release page.
 
 ## 0.2.1
 
+Release date: `2023-06-08`
+
 This is a bug fix release.
 
 For more details, see the [0.2.1 Changelog](https://github.com/maxGraph/maxGraph/releases/tag/v0.2.1) on
 the GitHub release page.
 
 ## 0.2.0
+
+Release date: `2023-05-22`
 
 This release contains bug fixes and documentation improvements.
 
@@ -51,6 +59,8 @@ For more details, see the [0.2.0 Changelog](https://github.com/maxGraph/maxGraph
 the GitHub release page.
 
 ## 0.1.0
+
+Release date: `2022-11-22`
 
 Initial `mxGraph` implementation. This is an **alpha** version.
 
