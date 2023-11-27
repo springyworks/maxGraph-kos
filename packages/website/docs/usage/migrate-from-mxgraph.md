@@ -9,9 +9,16 @@ Here's a breakdown of the proposed changes:
 2. [General guidelines](#general-guidelines)
 3. [Specific code changes](#specific-code-changes)
 
-> **Note:** **⚠️⚠️⚠️ This page is under construction. ⚠️⚠️⚠️  
+:::warning
+
+**This page is under construction.**
+
 Comments are welcome by creating an [issue](https://github.com/maxGraph/maxGraph/issues)
-or starting a [discussion](https://github.com/maxGraph/maxGraph/discussions/categories/q-a)!**.
+or starting a [discussion](https://github.com/maxGraph/maxGraph/discussions/categories/q-a)!.
+
+Feel free to create a [Pull Request](https://github.com/maxGraph/maxGraph/pulls) to enrich the content or fix errors.
+
+:::
 
 The `maxGraph` APIs are not fully compatible with the `mxGraph` APIs, but the `maxGraph` APIs are close to the former `mxGraph` APIs.
 The concepts are the same, so experienced `mxGraph` users should be able to switch from `mxGraph` to `maxGraph` without problems.
@@ -292,9 +299,9 @@ Several functions from the `mxGraphDataModel` class have been moved to the `Cell
 
 ### Misc
 
-Codec renaming and output: https://github.com/maxGraph/maxGraph/pull/70
+- Codec renaming and output: https://github.com/maxGraph/maxGraph/pull/70
+- `mxDictionary`&lt;T&gt; to `Dictionary`&lt;K, V&gt;
 
-mxDictionary<T> -> Dictionary<K, V>
 
 ### Event handling
 
@@ -425,10 +432,9 @@ by a semicolon as follows:
 
 > Styles are a collection of key, value pairs and a stylesheet is a collection
 of named styles. The names are referenced by the cellstyle, which is stored
-in <mxCell.style> with the following format: [stylename;|key=value;]. The
+in 'mxCell.style' with the following format: [stylename;|key=value;]. The
 string is resolved to a collection of key, value pairs, where the keys are
 overridden with the values in the string.
->
 
 See also
 - https://jgraph.github.io/mxgraph/docs/tutorial.html#3.3
@@ -441,8 +447,11 @@ In maxGraph, the style is no more defined as a string but as a `CellStyle` objec
 
 Most of the time, the name of `CellStyle` properties is the same as the style keys in the mxGraph style.
 
-⚠️⚠️⚠ **WARNING**: Be aware of the properties that have been renamed or whose value types have changed, as described in the [style-properties-change](./migrate-from-mxgraph.md#style-properties-change) paragraph.
+:::warning
 
+Be aware of the properties that have been renamed or whose value types have changed, as described in the [style-properties-change](./migrate-from-mxgraph.md#style-properties-change) paragraph.
+
+:::
 
 **Migration example**
 
@@ -468,7 +477,7 @@ graph.insertVertex({
 
 **Special migration case**
 In `mxGraph`, to not merge properties of the default style, the style string must start with a `;` (semicolon) as in `;style1;style2;prop1=value1;.....`.
-This is documented in the [mxStylesheet documentation](jgraph/mxgraph@v4.2.2/javascript/src/js/view/mxStylesheet.js#L33-L38).
+This is documented in the [mxStylesheet documentation](https://github.com/jgraph/mxgraph/blob/v4.2.2/javascript/src/js/view/mxStylesheet.js#L33-L38).
 > To override the default style for a cell, add a leading semicolon to the style definition, e.g. ;shadow=1
 
 This is currently not supported in maxGraph: https://github.com/maxGraph/maxGraph/issues/154 "Add a way to not use default style properties when calculating cell styles".

@@ -1,14 +1,14 @@
-name: Generate documentation
+name: Generate website
 
 on:
   pull_request:
     branches:
       - development
     paths:
-      - '.github/workflows/generate-documentation.yml'
+      - '.github/workflows/generate-website.yml'
       - '.nvmrc'
       - 'packages/core/*'
-      - 'packages/docs/*'
+      - 'packages/website/*'
       - 'package.json'
 
 jobs:
@@ -25,3 +25,13 @@ jobs:
       - name: Build @maxgraph/core API docs
         working-directory: packages/core
         run: npm run docs:api
+      - name: Build website
+        working-directory: packages/website
+        run: npm run build
+      - name: Upload website artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: website-${{github.sha}}
+          path: |
+            packages/core/build/api/
+            packages/website/build/
