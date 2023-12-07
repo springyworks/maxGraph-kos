@@ -1,5 +1,16 @@
 # `maxGraph` Change Log
 
+## 0.5.0
+
+Release date: `2023-12-07`
+
+This release contains new features, bug fixes and documentation improvements.
+
+**Breaking Changes**
+- the UMD bundle is no more provided in the npm package.
+
+For more details, see the [0.5.0 Changelog](https://github.com/maxGraph/maxGraph/releases/tag/v0.5.0) on the GitHub release page.
+
 ## 0.4.1
 
 Release date: `2023-10-30`

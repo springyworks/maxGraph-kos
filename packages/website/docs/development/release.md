@@ -26,6 +26,7 @@ released. Rename it if necessary.
 
 Changes in the source code
 - Update the version in `packages/core/package.json` and the `VERSION` constant in the `packages/core/src/Client.ts` file.
+- Update the `package-lock.json` file by running npm install at the root of the repository. It should only change the version of `@maxgraph/core`.
 - Update the `CHANGELOG` file to list the major changes included in the new version. Be generic and add a
 link to the future GitHub release that will contain detailed release notes, as shown below.
 ```markdown
@@ -35,6 +36,10 @@ the GitHub release page.
 - Make a single commit that includes the changes described above
   - use the following template for the commit message: `chore(release): prepare version 0.2.0`
   - push the changes
+    - The default branch is protected by a GitHub ruleset and prevent to push directly to the branch
+    - Update the ruleset and add a [bypass permission](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/creating-rulesets-for-a-repository#granting-bypass-permissions-for-your-ruleset) for your account
+    - Run the git push command
+    - Update the ruleset to remove the bypass permission 
 
 Create a git tag, prefixing the version with a `v`. For example, if the version is 0.2.0, run
 
