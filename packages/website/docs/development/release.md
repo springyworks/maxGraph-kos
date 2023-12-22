@@ -29,25 +29,29 @@ Changes in the source code
 - Update the `package-lock.json` file by running npm install at the root of the repository. It should only change the version of `@maxgraph/core`.
 - Update the `CHANGELOG` file to list the major changes included in the new version. Be generic and add a
 link to the future GitHub release that will contain detailed release notes, as shown below.
-```markdown
+```
 For more details, see the [0.1.0 Changelog](https://github.com/maxGraph/maxGraph/releases/tag/v0.1.0) on
 the GitHub release page.
 ```
+
 - Make a single commit that includes the changes described above
-  - use the following template for the commit message: `chore(release): prepare version 0.2.0`
-  - push the changes
-    - The default branch is protected by a GitHub ruleset and prevent to push directly to the branch
-    - Update the ruleset and add a [bypass permission](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/creating-rulesets-for-a-repository#granting-bypass-permissions-for-your-ruleset) for your account
-    - Run the git push command
-    - Update the ruleset to remove the bypass permission 
+  - Use the following template for the commit message: `chore(release): prepare version 0.2.0`
+  - Push the changes
+    - The default branch is protected by a GitHub ruleset that prevents direct pushing to the branch.
+    - Update the ruleset and add a [bypass permission](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/creating-rulesets-for-a-repository#granting-bypass-permissions-for-your-ruleset) for your account.
+    - Run the git push command.
+    - Update the ruleset to remove the bypass permission. 
 
-Create a git tag, prefixing the version with a `v`. For example, if the version is 0.2.0, run
-
+- Create a git tag, prefixing the version with a `v`. For example, if the version is 0.2.0, run:
 ```
 git fetch --tags
 git tag v0.2.0
-git push origin v0.2.0
 ```
+- Push the tag
+  - As for the default branch, tags are protected by a GitHub ruleset that prevents direct pushing tags.
+  - Update the ruleset and add a [bypass permission](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/creating-rulesets-for-a-repository#granting-bypass-permissions-for-your-ruleset) for your account.
+  - Run the git tag push, for example `git push origin v0.2.0`
+  - Update the ruleset to remove the bypass permission.
 
 
 ## Publish the npm package

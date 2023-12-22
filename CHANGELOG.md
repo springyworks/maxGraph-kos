@@ -1,6 +1,8 @@
 # `maxGraph` Change Log
 
-# UNRELEASED
+## 0.6.0
+
+Release date: `2023-12-22`
 
 **Breaking Changes**
 - Codecs supplied by `maxGraph` are no longer registered by default. They **MUST** be registered before performing an `encode` or `decode`.
@@ -10,6 +12,8 @@ You can use one of the following functions to register codecs:
   - `registerEditorCodecs`
 
 To serialize the `maxGraph` model, you can use the `ModelXmlSerializer` class, which registers codecs under the hood.
+
+For more details, see the [0.6.0 Changelog](https://github.com/maxGraph/maxGraph/releases/tag/v0.6.0) on the GitHub release page.
 
 ## 0.5.0
 
