@@ -57,7 +57,9 @@ class MaxPopupMenu extends EventSource implements Partial<PopupMenuItem> {
   ) {
     super();
 
-    this.factoryMethod = factoryMethod;
+    if (factoryMethod) {
+      this.factoryMethod = factoryMethod;
+    }
 
     // Adds the inner table
     this.table = document.createElement('table');
@@ -189,9 +191,9 @@ class MaxPopupMenu extends EventSource implements Partial<PopupMenuItem> {
     funct: Function,
     parent: PopupMenuItem | null = null,
     iconCls: string | null = null,
-    enabled: boolean | null = null,
-    active: boolean | null = null,
-    noHover: boolean | null = null
+    enabled = true,
+    active = true,
+    noHover = false
   ) {
     parent = (parent ?? this) as PopupMenuItem;
     this.itemCount++;
