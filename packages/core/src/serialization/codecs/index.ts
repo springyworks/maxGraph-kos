@@ -23,3 +23,5 @@ export * from './ModelCodec';
 export * from './RootChangeCodec';
 export * from './StylesheetCodec';
 export * from './TerminalChangeCodec';
+export * from './mxGraph/mxCellCodec';
+export * from './mxGraph/mxGeometryCodec';
