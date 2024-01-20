@@ -1,5 +1,13 @@
 # `maxGraph` Change Log
 
+## 0.7.0
+
+Release date: `2024-01-20`
+
+This release contains new features and bug fixes.
+
+For more details, see the [0.7.0 Changelog](https://github.com/maxGraph/maxGraph/releases/tag/v0.7.0) on the GitHub release page.
+
 ## 0.6.0
 
 Release date: `2023-12-22`
