@@ -56,6 +56,8 @@ import type { GraphPlugin, GraphPluginConstructor, MouseListenerSet } from '../t
 import Multiplicity from './other/Multiplicity';
 import ImageBundle from './image/ImageBundle';
 import GraphSelectionModel from './GraphSelectionModel';
+import { registerDefaultShapes } from './cell/register-shapes';
+import { registerDefaultStyleElements } from './style/register';
 
 export const defaultPlugins: GraphPluginConstructor[] = [
   CellEditorHandler,
@@ -486,6 +488,11 @@ class Graph extends EventSource {
   // Group: Main graph constructor and functions
   // ===================================================================================================================
 
+  protected registerDefaults(): void {
+    registerDefaultShapes();
+    registerDefaultStyleElements();
+  }
+
   constructor(
     container: HTMLElement,
     model?: GraphDataModel,
@@ -493,6 +500,7 @@ class Graph extends EventSource {
     stylesheet: Stylesheet | null = null
   ) {
     super();
+    this.registerDefaults();
 
     this.container = container ?? document.createElement('div');
     this.model = model ?? this.createGraphDataModel();
