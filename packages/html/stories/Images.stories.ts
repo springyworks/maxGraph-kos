@@ -15,14 +15,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import {
-  Graph,
-  cloneUtils,
-  ImageBox,
-  Rectangle,
-  constants,
-  Perimeter,
-} from '@maxgraph/core';
+import { Graph, cloneUtils, ImageBox, Rectangle, CellStateStyle } from '@maxgraph/core';
 import { globalTypes, globalValues } from './shared/args.js';
 
 export default {
@@ -35,13 +28,12 @@ export default {
   },
 };
 
-const Template = ({ label, ...args }) => {
+const Template = ({ label, ...args }: Record<string, any>) => {
   const container = document.createElement('div');
   container.style.position = 'relative';
   container.style.overflow = 'hidden';
   container.style.width = `${args.width}px`;
   container.style.height = `${args.height}px`;
-  container.style.background = 'url(/images/grid.gif)';
   container.style.cursor = 'default';
 
   // Creates the graph inside the given container
@@ -65,94 +57,67 @@ const Template = ({ label, ...args }) => {
 
   // Adds cells to the model in a single step
   graph.batchUpdate(() => {
-    var v1 = graph.insertVertex(
-      parent,
-      null,
-      'First Line\nSecond Line',
-      20,
-      10,
-      80,
-      100,
-      { baseStyleNames: ['bottom'] }
-    );
-    var v1 = graph.insertVertex(
-      parent,
-      null,
-      'First Line\nSecond Line',
-      130,
-      10,
-      80,
-      100,
-      { baseStyleNames: ['top'] }
-    );
-    var v1 = graph.insertVertex(parent, null, '', 230, 10, 100, 100, {
+    graph.insertVertex(parent, null, 'First Line\nSecond Line', 20, 10, 80, 100, {
+      baseStyleNames: ['bottom'],
+    });
+    graph.insertVertex(parent, null, 'First Line\nSecond Line', 130, 10, 80, 100, {
+      baseStyleNames: ['top'],
+    });
+    graph.insertVertex(parent, null, '', 230, 10, 100, 100, {
       baseStyleNames: ['image'],
     });
-    var v2 = graph.insertVertex(
-      parent,
-      null,
-      'First Line\nSecond Line',
-      20,
-      130,
-      140,
-      60,
-      { baseStyleNames: ['right'] }
-    );
-    var v2 = graph.insertVertex(
-      parent,
-      null,
-      'First Line\nSecond Line',
-      180,
-      130,
-      140,
-      60,
-      { baseStyleNames: ['left'] }
-    );
+    graph.insertVertex(parent, null, 'First Line\nSecond Line', 20, 130, 140, 60, {
+      baseStyleNames: ['right'],
+    });
+    graph.insertVertex(parent, null, 'First Line\nSecond Line', 180, 130, 140, 60, {
+      baseStyleNames: ['left'],
+    });
   });
 
-  function configureStylesheet(graph) {
-    let style = {};
-    style.shape = constants.SHAPE.IMAGE;
-    style.perimiter = Perimeter.RectanglePerimeter;
+  function configureStylesheet(graph: Graph) {
+    let style: CellStateStyle = {};
+    style.shape = 'image';
     style.image = 'images/icons48/keys.png';
     style.fontColor = '#FFFFFF';
     graph.getStylesheet().putCellStyle('image', style);
 
     style = cloneUtils.clone(style);
-    style.shape = constants.SHAPE.LABEL;
+    style.shape = 'label';
     style.strokeColor = '#000000';
-    style.align = constants.ALIGN.CENTER;
-    style.verticalAlign = constants.ALIGN.TOP;
-    style.imageAlign = constants.ALIGN.CENTER;
-    style.imageVerticalAlign = constants.ALIGN.TOP;
+    style.align = 'center';
+    style.verticalAlign = 'top';
+    style.imageAlign = 'center';
+    // TODO missing 'imageVerticalAlign' property in CellStateStyle
+    // style.imageVerticalAlign = 'top';
     style.image = 'images/icons48/gear.png';
-    style.imageWidth = '48';
-    style.imageHeight = '48';
-    style.spacingTop = '56';
-    style.spacing = '8';
+    style.imageWidth = 48;
+    style.imageHeight = 48;
+    style.spacingTop = 56;
+    style.spacing = 8;
     graph.getStylesheet().putCellStyle('bottom', style);
 
     style = cloneUtils.clone(style);
-    style.imageVerticalAlign = constants.ALIGN.BOTTOM;
+    // TODO missing 'imageVerticalAlign' property in CellStateStyle
+    // style.imageVerticalAlign = 'bottom';
     style.image = 'images/icons48/server.png';
     delete style.spacingTop;
     graph.getStylesheet().putCellStyle('top', style);
 
     style = cloneUtils.clone(style);
-    style.align = constants.ALIGN.LEFT;
-    style.imageAlign = constants.ALIGN.LEFT;
-    style.verticalAlign = constants.ALIGN.MIDDLE;
-    style.imageVerticalAlign = constants.ALIGN.MIDDLE;
+    style.align = 'left';
+    style.verticalAlign = 'middle';
+    // TODO missing 'imageVerticalAlign' property in CellStateStyle
+    // style.imageVerticalAlign = 'middle';
     style.image = 'images/icons48/earth.png';
-    style.spacingLeft = '55';
-    style.spacing = '4';
+    style.spacingLeft = 55;
+    style.spacing = 4;
     graph.getStylesheet().putCellStyle('right', style);
 
     style = cloneUtils.clone(style);
-    style.align = constants.ALIGN.RIGHT;
-    style.imageAlign = constants.ALIGN.RIGHT;
+    style.align = 'right';
+    style.imageAlign = 'right';
     delete style.spacingLeft;
-    style.spacingRight = '55';
+    style.spacingRight = 55;
     graph.getStylesheet().putCellStyle('left', style);
   }
 

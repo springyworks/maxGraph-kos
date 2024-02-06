@@ -15,7 +15,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import { Graph, Perimeter, constants, RubberBandHandler } from '@maxgraph/core';
+import { Graph, Perimeter, RubberBandHandler } from '@maxgraph/core';
 import {
   globalTypes,
   globalValues,
@@ -37,7 +37,7 @@ export default {
   },
 };
 
-const Template = ({ label, ...args }) => {
+const Template = ({ label, ...args }: Record<string, any>) => {
   const container = document.createElement('div');
   container.style.position = 'relative';
   container.style.overflow = 'hidden';
@@ -57,18 +57,18 @@ const Template = ({ label, ...args }) => {
 
   // Makes all cells round with a white, bold label
   let style = graph.stylesheet.getDefaultVertexStyle();
-  style.shape = constants.SHAPE.ELLIPSE;
-  style.perimiter = Perimeter.EllipsePerimeter;
+  style.shape = 'ellipse';
+  style.perimeter = Perimeter.EllipsePerimeter;
   style.fontColor = 'white';
   style.gradientColor = 'white';
-  style.fontStyle = constants.FONT.BOLD;
+  style.fontStyle = 1; // bold
   style.fontSize = 14;
   style.shadow = true;
 
   // Makes all edge labels gray with a white background
   style = graph.stylesheet.getDefaultEdgeStyle();
   style.fontColor = 'gray';
-  style.fontStyle = constants.FONT.BOLD;
+  style.fontStyle = 1; // bold
   style.fontColor = 'black';
   style.strokeWidth = 2;
 
@@ -89,23 +89,23 @@ const Template = ({ label, ...args }) => {
     const b = graph.insertVertex(parent, 'b', 'B', 20, 200, w, h, { fillColor: 'blue' });
     const c = graph.insertVertex(parent, 'c', 'C', 200, 20, w, h, { fillColor: 'red' });
     const d = graph.insertVertex(parent, 'd', 'D', 200, 200, w, h, { fillColor: 'red' });
-    const ac = graph.insertEdge(parent, 'ac', 'ac', a, c, {
+    graph.insertEdge(parent, 'ac', 'ac', a, c, {
       strokeColor: 'blue',
       verticalAlign: 'bottom',
     });
-    const ad = graph.insertEdge(parent, 'ad', 'ad', a, d, {
+    graph.insertEdge(parent, 'ad', 'ad', a, d, {
       strokeColor: 'blue',
       align: 'left',
       verticalAlign: 'bottom',
     });
-    const bd = graph.insertEdge(parent, 'bd', 'bd', b, d, {
+    graph.insertEdge(parent, 'bd', 'bd', b, d, {
       strokeColor: 'blue',
       verticalAlign: 'bottom',
     });
   });
 
   // Creates the second graph model (without a container)
-  const graph2 = new Graph();
+  const graph2 = new Graph(null!);
 
   // Gets the default parent for inserting new cells. This
   // is normally the first child of the root (ie. layer 0).
@@ -126,16 +126,16 @@ const Template = ({ label, ...args }) => {
     const f = graph2.insertVertex(parent2, 'f', 'F', 400, 200, w, h, {
       fillColor: 'green',
     });
-    const ce = graph2.insertEdge(parent2, 'ce', 'ce', c, e, {
+    graph2.insertEdge(parent2, 'ce', 'ce', c, e, {
       strokeColor: 'green',
       verticalAlign: 'bottom',
     });
-    const ed = graph2.insertEdge(parent2, 'ed', 'ed', e, d, {
+    graph2.insertEdge(parent2, 'ed', 'ed', e, d, {
       strokeColor: 'green',
       align: 'right',
       verticalAlign: 'bottom',
     });
-    const fd = graph2.insertEdge(parent2, 'bd', 'fd', f, d, {
+    graph2.insertEdge(parent2, 'bd', 'fd', f, d, {
       strokeColor: 'green',
       verticalAlign: 'bottom',
     });
