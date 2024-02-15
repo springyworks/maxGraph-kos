@@ -14,14 +14,6 @@ algorithms and applications of [Graph Theory](https://en.wikipedia.org/wiki/Grap
 which requires finer-grained customization of functionality than off-the-shelf packages.
 <!-- END OF 'copied into packages/core/README.md and packages/website/docs/intro.md' -->
 
-Note that the original default branch was `master`, and this has now been renamed `main`. If you had a checkout with the old branch name then follow these instructions to get the new branch name:
-
-```
-git branch -m master main
-git fetch origin
-git branch -u origin/main main
-git remote set-head origin -a
-```
 
 The `maxGraph` library uses no third-party software, it requires no plugins and can be integrated in virtually any framework (it's vanilla JS).
 
