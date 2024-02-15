@@ -1,0 +1,68 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - development
+    paths:
+      - '.github/actions/build-setup/**/*'
+      - '.github/workflows/build.yml'
+      - '.eslint*'
+      - '.nvmrc'
+      - 'packages/**/*'
+      - '!packages/**/*.md'
+      - '!packages/website/**/*'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'tsconfig.json'
+  pull_request:
+    branches:
+      - development
+    paths:
+      - '.github/actions/build-setup/**/*'
+      - '.github/workflows/build.yml'
+      - '.eslint*'
+      - '.nvmrc'
+      - 'packages/**/*'
+      - '!packages/**/*.md'
+      - '!packages/website/**/*'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'tsconfig.json'
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      # we want to run the full build on all os: don't cancel running jobs even if one fails
+      fail-fast: false
+      matrix:
+        os: ['ubuntu-22.04', 'macos-13', 'windows-2022']
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Setup
+        uses: ./.github/actions/build-setup
+      - name: Build @maxgraph/core - esm
+        run: npm run build -w packages/core
+      - name: Test @maxgraph/core
+        run: npm test -w packages/core -- --coverage
+      - name: Upload test results as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-coverage-${{runner.os}}-${{github.sha}}
+          path: packages/core/coverage/lcov-report
+      - name: Test TypeScript support
+        run: npm test -w packages/ts-support
+      - name: Build ts-example
+        run: npm run build -w packages/ts-example
+      - name: Build Storybook mini-site
+        run: npm run build -w packages/html
+      - name: Upload all examples as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: examples-${{runner.os}}-${{github.sha}}
+          path: |
+            packages/html/dist/
+            packages/ts-example/dist/
+      - name: Ensure no lint errors
+        run: npm run lint

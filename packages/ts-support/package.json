@@ -1,0 +1,10 @@
+{
+  "name": "@maxgraph/ts-support",
+  "private": true,
+  "scripts": {
+    "test": "tsc --version && tsc"
+  },
+  "devDependencies": {
+    "typescript": "3.8.2"
+  }
+}
