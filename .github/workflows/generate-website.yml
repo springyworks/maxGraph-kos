@@ -24,6 +24,8 @@ jobs:
         uses: ./.github/actions/build-setup
       - name: Build @maxgraph/core API docs
         run: npm run docs:api -w packages/core
+      - name: Copy generated resources to the website
+        run: npm run extra:copy-gen-resources -w packages/website
       - name: Build website
         run: npm run build -w packages/website
       - name: Upload website artifact
@@ -31,5 +33,4 @@ jobs:
         with:
           name: website-${{github.sha}}
           path: |
-            packages/core/build/api/
             packages/website/build/
