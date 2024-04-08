@@ -1,6 +1,12 @@
 # `maxGraph` Change Log
 
-## UNRELEASED
+## 0.9.0
+
+Release date: `2024-04-08`
+
+For more details, see the [0.9.0 Changelog](https://github.com/maxGraph/maxGraph/releases/tag/v0.9.0) on the GitHub release page.
+
+This release contains documentation improvements and bug fixes.
 
 **Breaking Changes**
 - it is no longer possible to pass a 'n' value for the `max` property of the `Multiplicity` class. Pass `null` instead to have the same effect.
