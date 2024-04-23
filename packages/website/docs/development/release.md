@@ -18,6 +18,7 @@ Currently, the release process is completely manual. Automation will come later 
 
 Decide on the new version depending on the type of changes:
 - Follow [semver](https://semver.org/)
+- Check the new commits since the latest release to determine the type of changes included in the new version.
 - Until we release the first major version, bump the minor version if the release contains new features or breaking changes.
 
 Check the milestone associated with the new release. **Note:** We always put issues related to a version into a Milestone whose

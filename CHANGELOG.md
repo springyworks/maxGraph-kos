@@ -1,5 +1,13 @@
 # `maxGraph` Change Log
 
+## 0.10.1
+
+Release date: `2024-04-23`
+
+For more details, see the [0.10.1 Changelog](https://github.com/maxGraph/maxGraph/releases/tag/v0.10.1) on the GitHub release page.
+
+This release contains documentation improvements and bug fixes.
+
 ## 0.10.0
 
 Release date: `2024-04-19`
