@@ -4,6 +4,11 @@
 
 **Breaking Changes**
 - In `StencilShape`, the `allowEval` and `defaultLocalized` static properties have been removed. Configure these properties using `StencilShapeConfig`. 
+- Logs are no longer sent to `MaxLog` by default. To restore the previous behavior, change maxGraph's global configuration with:
+```js
+GlobalConfig.logger = new MaxLogAsLogger();
+```
+- `MaxWindow.activeWindow` is no longer available; it was intended for internal use only, so there's no reason to make it public.
 
 ## 0.10.3
 
