@@ -15,10 +15,9 @@ limitations under the License.
 */
 
 import { describe, expect, test } from '@jest/globals';
-import { cloneCells, getOpposites } from '../../src/util/cellArrayUtils';
+import { cloneCell, cloneCells, getOpposites } from '../../src/util/cellArrayUtils';
 import { IDENTITY_FIELD_NAME } from '../../src/util/Constants';
 import Cell from '../../src/view/cell/Cell';
-import { GraphDataModel } from '../../src/view/GraphDataModel';
 
 describe('getOpposites', () => {
   const edges: Cell[] = [];
@@ -118,11 +117,8 @@ describe('cloneCells', () => {
 });
 
 describe('cloneCell', () => {
-  // Tests are located here as they are similar to cloneCells test and cloneCell will be move out of GraphDataModel in the future
-  const model = new GraphDataModel();
-
   test('null cell', () => {
-    expect(model.cloneCell(null)).toBeNull();
+    expect(cloneCell(null)).toBeNull();
   });
 
   describe('cell without children', () => {
@@ -134,7 +130,7 @@ describe('cloneCell', () => {
         // @ts-ignore
         expect(cell[IDENTITY_FIELD_NAME]).toBeUndefined();
 
-        const clone = model.cloneCell(cell, includeChildren);
+        const clone = cloneCell(cell, includeChildren);
         expect(clone).not.toBe(cell); // this is not the same instance, but a new one
 
         expect(cell.getParent()).not.toBeNull(); // untouched
@@ -159,7 +155,7 @@ describe('cloneCell', () => {
         // @ts-ignore
         expect(cell[IDENTITY_FIELD_NAME]).toBeUndefined();
 
-        const clone = model.cloneCell(cell, includeChildren);
+        const clone = cloneCell(cell, includeChildren);
         expect(clone).not.toBe(cell); // this is not the same instance, but a new one
 
         expect(cell.getParent()).toBeNull(); // untouched
