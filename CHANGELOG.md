@@ -1,6 +1,12 @@
 # `maxGraph` Change Log
 
-## UNRELEASED
+## 0.11.0
+
+Release date: `2024-06-09`
+
+For more details, see the [0.11.0 Changelog](https://github.com/maxGraph/maxGraph/releases/tag/v0.11.0) on the GitHub release page.
+
+This release contains enhancements, documentation improvements and bug fixes.
 
 **Breaking Changes**
 - In `StencilShape`, the `allowEval` and `defaultLocalized` static properties have been removed. Configure these properties using `StencilShapeConfig`. 
@@ -198,7 +204,7 @@ For more details, see the [0.1.0 Changelog](https://github.com/maxGraph/maxGraph
 
 ## `mxGraph` Change Log
 
-The `maxGraph`implementation is derived from the `mxGraph v4.2.2` implementation.
+The `maxGraph`implementation is derived from `mxGraph` version `4.2.2`, released on `28-OCT-2020`.
 
 The mxGraph change log can be found at the following addresses:
   - https://github.com/jgraph/mxgraph/blob/v4.2.2/ChangeLog
