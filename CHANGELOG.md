@@ -1,5 +1,11 @@
 # `maxGraph` Change Log
 
+## UNRELEASED
+
+**Breaking Changes**
+- `VertexHandler.rotationEnabled` has been removed as it was not possible to correctly change its value.
+Use `VertexHandlerConfig.rotationEnabled` to configure the rotation behavior globally or override the `VertexHandler.isRotationEnabled` method.
+
 ## 0.11.0
 
 Release date: `2024-06-09`
