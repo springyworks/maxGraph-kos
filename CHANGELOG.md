@@ -1,6 +1,12 @@
 # `maxGraph` Change Log
 
-## UNRELEASED
+## 0.12.0
+
+Release date: `2024-07-05`
+
+For more details, see the [0.12.0 Changelog](https://github.com/maxGraph/maxGraph/releases/tag/v0.12.0) on the GitHub release page.
+
+This release contains enhancements, documentation improvements and bug fixes.
 
 **Breaking Changes**
 - `VertexHandler.rotationEnabled` has been removed as it was not possible to correctly change its value.
