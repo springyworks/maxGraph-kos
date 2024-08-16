@@ -536,7 +536,7 @@ class Graph extends EventSource {
   }
 
   getContainer = () => this.container;
-  getPlugin = (id: string) => this.plugins[id] as unknown;
+  getPlugin = <T extends GraphPlugin>(id: string): T => this.plugins[id] as T;
   getCellRenderer = () => this.cellRenderer;
   getDialect = () => this.dialect;
   isPageVisible = () => this.pageVisible;
@@ -720,7 +720,7 @@ class Graph extends EventSource {
    * specified.
    */
   scrollPointToVisible(x: number, y: number, extend = false, border = 20) {
-    const panningHandler = this.getPlugin('PanningHandler') as PanningHandler;
+    const panningHandler = this.getPlugin<PanningHandler>('PanningHandler');
 
     if (
       !this.isTimerAutoScroll() &&
