@@ -422,9 +422,7 @@ class PrintPreview {
         doc.writeln('<html>');
 
         doc.writeln('<head>');
-        if (css) {
-          this.writeHead(doc, css);
-        }
+        this.writeHead(doc, css);
         doc.writeln('</head>');
         doc.writeln('<body class="mxPage">');
       }
@@ -625,7 +623,7 @@ class PrintPreview {
    * Writes the HEAD section into the given document, without the opening
    * and closing HEAD tags.
    */
-  writeHead(doc: Document, css: string): void {
+  writeHead(doc: Document, css: string | null): void {
     if (this.title != null) {
       doc.writeln(`<title>${this.title}</title>`);
     }
