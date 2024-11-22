@@ -2,6 +2,7 @@ import type { Preview } from '@storybook/html';
 import {
   GlobalConfig,
   NoOpLogger,
+  resetEdgeHandlerConfig,
   resetHandleConfig,
   resetStyleDefaultsConfig,
   resetVertexHandlerConfig,
@@ -17,6 +18,7 @@ const defaultLogger = new NoOpLogger();
 const resetMaxGraphConfigs = (): void => {
   GlobalConfig.logger = defaultLogger;
 
+  resetEdgeHandlerConfig();
   resetHandleConfig();
   resetStyleDefaultsConfig();
   resetVertexHandlerConfig();

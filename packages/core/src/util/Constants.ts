@@ -112,13 +112,13 @@ export const DEFAULT_INVALID_COLOR = '#FF0000';
 
 /**
  * Specifies the default highlight color for shape outlines.
- * Default is #0000FF. This is used in {@link EdgeHandler}.
+ * Default is #0000FF. This is used in {@link ConnectionHandler} and {@link EdgeHandler}.
  */
 export const OUTLINE_HIGHLIGHT_COLOR = '#00FF00';
 
 /**
  * Defines the strokewidth to be used for shape outlines.
- * Default is 5. This is used in {@link EdgeHandler}.
+ * Default is 5. This is used in {@link ConnectionHandler} and {@link EdgeHandler}.
  */
 export const OUTLINE_HIGHLIGHT_STROKEWIDTH = 5;
 
@@ -199,26 +199,32 @@ export const VALID_COLOR = '#00FF00';
 export const INVALID_COLOR = '#FF0000';
 
 /**
- * Defines the color to be used for the selection border of edges. Use
- * 'none' for no color. Default is #00FF00.
+ * Default value ('green' color) of {@link EdgeHandlerConfig.selectionColor}.
  */
 export const EDGE_SELECTION_COLOR = '#00FF00';
 
+/**
+ * Default value ('green' color) of {@link VertexHandlerConfig.selectionColor}.
+ */
 export const VERTEX_SELECTION_COLOR = '#00FF00';
 
+/**
+ * Default value of {@link VertexHandlerConfig.selectionStrokeWidth}.
+ */
 export const VERTEX_SELECTION_STROKEWIDTH = 1;
 
 /**
- * Defines the strokewidth to be used for edge selections.
- * Default is 1.
+ * Default value of {@link EdgeHandlerConfig.selectionStrokeWidth}.
  */
 export const EDGE_SELECTION_STROKEWIDTH = 1;
 
+/**
+ * Default value of {@link VertexHandlerConfig.selectionDashed}.
+ */
 export const VERTEX_SELECTION_DASHED = true;
 
 /**
- * Defines the dashed state to be used for the edge selection
- * border. Default is true.
+ * Default value of {@link EdgeHandlerConfig.selectionDashed}.
  */
 export const EDGE_SELECTION_DASHED = true;
 
@@ -246,26 +252,33 @@ export const OUTLINE_COLOR = '#0099FF';
  */
 export const OUTLINE_STROKEWIDTH = 3;
 
+/**
+ * Default value of {@link HandleConfig.size}.
+ */
 export const HANDLE_SIZE = 6;
 
 /**
- * Defines the default size for label handles. Default is 4.
+ * Default value of {@link HandleConfig.labelSize}.
  */
 export const LABEL_HANDLE_SIZE = 4;
 
+/**
+ * Default value ('green' color) of {@link HandleConfig.fillColor}.
+ */
 export const HANDLE_FILLCOLOR = '#00FF00';
 
+/**
+ * Default value of {@link HandleConfig.strokeColor}.
+ */
 export const HANDLE_STROKECOLOR = 'black';
 
 /**
- * Defines the color to be used for the label handle fill color. Use 'none'
- * for no color. Default is yellow.
+ * Default value of {@link HandleConfig.labelFillColor}.
  */
 export const LABEL_HANDLE_FILLCOLOR = 'yellow';
 
 /**
- * Defines the color to be used for the connect handle fill color. Use
- * 'none' for no color. Default is #0000FF (blue).
+ * Default value ('blue' color) of {@link EdgeHandlerConfig.connectFillColor}.
  */
 export const CONNECT_HANDLE_FILLCOLOR = '#0000FF';
 

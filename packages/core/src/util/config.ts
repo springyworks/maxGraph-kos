@@ -47,7 +47,7 @@ export const GlobalConfig = {
    * GlobalConfig.logger = new MaxLogAsLogger();
    * ```
    *
-   * @default `NoOpLogger`
+   * @default {@link NoOpLogger}
    */
   logger: new NoOpLogger() as Logger,
 };

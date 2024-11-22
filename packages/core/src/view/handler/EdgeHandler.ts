@@ -19,18 +19,12 @@ limitations under the License.
 import CellMarker from '../cell/CellMarker';
 import Point from '../geometry/Point';
 import {
-  CONNECT_HANDLE_FILLCOLOR,
   CURSOR,
   DEFAULT_HOTSPOT,
   DEFAULT_INVALID_COLOR,
   DEFAULT_VALID_COLOR,
   DIALECT,
-  EDGE_SELECTION_COLOR,
-  EDGE_SELECTION_DASHED,
-  EDGE_SELECTION_STROKEWIDTH,
   HIGHLIGHT_STROKEWIDTH,
-  LABEL_HANDLE_FILLCOLOR,
-  LABEL_HANDLE_SIZE,
   LOCKED_HANDLE_FILLCOLOR,
   NONE,
   OUTLINE_HIGHLIGHT_COLOR,
@@ -58,7 +52,7 @@ import {
   isMouseEvent,
   isShiftDown,
 } from '../../util/EventUtils';
-import { Graph } from '../Graph';
+import type { Graph } from '../Graph';
 import CellState from '../cell/CellState';
 import Shape from '../geometry/Shape';
 import { CellHandle, ColorValue, Listenable } from '../../types';
@@ -68,21 +62,16 @@ import ImageBox from '../image/ImageBox';
 import EventSource from '../event/EventSource';
 import SelectionHandler from './SelectionHandler';
 import { equalPoints } from '../../util/arrayUtils';
-import { HandleConfig } from './config';
+import { EdgeHandlerConfig, HandleConfig } from './config';
 
 /**
- * Graph event handler that reconnects edges and modifies control points and the edge label location.
+ * Graph event handler that reconnects edges, modifies control points and the edge label location.
  *
  * Uses {@link CellMarker} for finding and highlighting new source and target vertices.
  *
  * This handler is automatically created in {@link Graph.createHandler} for each selected edge.
  *
- * To enable adding/removing control points, the following code can be used:
- * ```javascript
- * EdgeHandler.prototype.addEnabled = true;
- * EdgeHandler.prototype.removeEnabled = true;
- * ```
- * Note: This experimental feature is not recommended for production use.
+ * Some elements of this handler and its subclasses can be configured using {@link EdgeHandlerConfig}.
  */
 class EdgeHandler {
   /**
@@ -270,7 +259,7 @@ class EdgeHandler {
     // `state.shape` must exists.
     this.state = state;
 
-    this.graph = <Graph>this.state.view.graph;
+    this.graph = this.state.view.graph;
     this.marker = this.createMarker();
     this.constraintHandler = new ConstraintHandler(this.graph);
 
@@ -352,7 +341,7 @@ class EdgeHandler {
       }
     };
 
-    (<Graph>this.state.view.graph).addListener(InternalEvent.ESCAPE, this.escapeHandler);
+    this.state.view.graph.addListener(InternalEvent.ESCAPE, this.escapeHandler);
   }
 
   /**
@@ -501,24 +490,24 @@ class EdgeHandler {
   }
 
   /**
-   * Returns {@link EDGE_SELECTION_COLOR}.
+   * Returns {@link EdgeHandlerConfig.selectionColor}.
    */
   getSelectionColor() {
-    return EDGE_SELECTION_COLOR;
+    return EdgeHandlerConfig.selectionColor;
   }
 
   /**
-   * Returns {@link EDGE_SELECTION_STROKEWIDTH}.
+   * Returns {@link EdgeHandlerConfig.selectionStrokeWidth}.
    */
   getSelectionStrokeWidth() {
-    return EDGE_SELECTION_STROKEWIDTH;
+    return EdgeHandlerConfig.selectionStrokeWidth;
   }
 
   /**
-   * Returns {@link EDGE_SELECTION_DASHED}.
+   * Returns {@link EdgeHandlerConfig.selectionDashed}.
    */
   isSelectionDashed() {
-    return EDGE_SELECTION_DASHED;
+    return EdgeHandlerConfig.selectionDashed;
   }
 
   /**
@@ -676,7 +665,7 @@ class EdgeHandler {
   }
 
   /**
-   * Creates the shape used to display the the label handle.
+   * Creates the shape used to display the label handle.
    */
   createLabelHandleShape() {
     if (this.labelHandleImage) {
@@ -690,10 +679,10 @@ class EdgeHandler {
 
       return shape;
     }
-    const s = LABEL_HANDLE_SIZE;
+    const s = HandleConfig.labelSize;
     return new RectangleShape(
       new Rectangle(0, 0, s, s),
-      LABEL_HANDLE_FILLCOLOR,
+      HandleConfig.labelFillColor,
       HandleConfig.strokeColor
     );
   }
@@ -1618,7 +1607,7 @@ class EdgeHandler {
       }
     }
 
-    this.setPreviewColor(EDGE_SELECTION_COLOR);
+    this.setPreviewColor(EdgeHandlerConfig.selectionColor);
     this.removeHint();
     this.redraw();
   }
@@ -1884,7 +1873,7 @@ class EdgeHandler {
       terminal != null &&
       this.graph.isCellDisconnectable(cell, terminal, isSource)
     ) {
-      color = CONNECT_HANDLE_FILLCOLOR;
+      color = EdgeHandlerConfig.connectFillColor;
     }
 
     return color;
@@ -2041,9 +2030,7 @@ class EdgeHandler {
    * Returns true if the given custom handle is visible.
    */
   isCustomHandleVisible(handle: CellHandle) {
-    return (
-      !this.graph.isEditing() && (<Graph>this.state.view.graph).getSelectionCount() === 1
-    );
+    return !this.graph.isEditing() && this.state.view.graph.getSelectionCount() === 1;
   }
 
   /**
@@ -2231,7 +2218,7 @@ class EdgeHandler {
    * when the corresponding cell is deselected.
    */
   onDestroy() {
-    (<Graph>this.state.view.graph).removeListener(this.escapeHandler);
+    this.state.view.graph.removeListener(this.escapeHandler);
 
     this.marker.destroy();
     // @ts-expect-error Can be null when destroyed.
